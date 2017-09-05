@@ -8,13 +8,12 @@ require 'watir_angular/locators/element/selector_builder'
 require 'watir_angular/locators/element/validator'
 
 module WatirAngular
-  def wait_for_angular(browser, timeout: Watir.default_timeout)
-    driver = browser.wd
+  def wait_for_angular(timeout: Watir.default_timeout)
     angular_element = "document.querySelectorAll('[ng-app]')[0]"
-    driver.execute_script("angular.element(#{angular_element}).scope().pageFinishedRendering = false")
-    driver.execute_script("angular.getTestability(#{angular_element}).whenStable(function(){angular.element(#{angular_element}).scope().pageFinishedRendering = true})")
-    browser.wait_until(timeout: timeout, message: "waiting for angular to render") do
-      driver.execute_script("return angular.element(#{angular_element}).scope().pageFinishedRendering")
+    wd.execute_script("angular.element(#{angular_element}).scope().pageFinishedRendering = false")
+    wd.execute_script("angular.getTestability(#{angular_element}).whenStable(function(){angular.element(#{angular_element}).scope().pageFinishedRendering = true})")
+    wait_until(timeout: timeout, message: "waiting for angular to render") do
+      wd.execute_script("return angular.element(#{angular_element}).scope().pageFinishedRendering")
     end
   rescue Selenium::WebDriver::Error::InvalidElementStateError
     # no ng-app found on page, continue as normal

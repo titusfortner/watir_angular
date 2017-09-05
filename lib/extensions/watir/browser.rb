@@ -9,7 +9,7 @@ module Watir
 
     def initialize(*args)
       watir_initialize(*args)
-      proc = ->(browser) { wait_for_angular(browser) }
+      proc = ->(browser) { browser.wait_for_angular }
       @after_hooks.add(proc)
     end
   end # Browser
