@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Custom support for using Watir with Angular based websites.}
   spec.description   = %q{Adds direct support for Angular specific locators and waiting strategies for use with Watir}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = 'http://github.com/titusfortner/watir_angular'
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
