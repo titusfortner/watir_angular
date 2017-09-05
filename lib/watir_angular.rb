@@ -29,8 +29,17 @@ end
 require 'extensions/watir/browser'
 Watir.locator_namespace = WatirAngular::Locators
 
-WatirAngular::Locators::Button    = Watir::Locators::Button
-WatirAngular::Locators::Cell      = Watir::Locators::Cell
-WatirAngular::Locators::Row       = Watir::Locators::Row
-WatirAngular::Locators::TextArea  = Watir::Locators::TextArea
-WatirAngular::Locators::TextField = Watir::Locators::TextField
+class WatirAngular::Locators::Button < WatirAngular::Locators::Element; end
+class WatirAngular::Locators::Cell < WatirAngular::Locators::Element; end
+class WatirAngular::Locators::Row < WatirAngular::Locators::Element; end
+class WatirAngular::Locators::TextArea < WatirAngular::Locators::Element; end
+class WatirAngular::Locators::TextField < WatirAngular::Locators::Element; end
+
+WatirAngular::Locators::Button::Locator = Watir::Locators::Button::Locator
+WatirAngular::Locators::Cell::Locator = Watir::Locators::Cell::Locator
+WatirAngular::Locators::Row::Locator = Watir::Locators::Row::Locator
+WatirAngular::Locators::TextArea::Locator = Watir::Locators::TextArea::Locator
+WatirAngular::Locators::TextField::Locator = Watir::Locators::TextField::Locator
+
+WatirAngular::Locators::Button::Validator = Watir::Locators::Button::Validator
+WatirAngular::Locators::TextField::Validator = Watir::Locators::TextField::Validator
