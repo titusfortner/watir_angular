@@ -26,6 +26,12 @@ Or install it yourself as:
 
     $ gem install watir_angular
 
+## Usage
+
+```ruby
+require "watir_angular"
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/titusfortner/watir_angular.
