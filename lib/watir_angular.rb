@@ -28,3 +28,9 @@ end
 
 require 'extensions/watir/browser'
 Watir.locator_namespace = WatirAngular::Locators
+
+WatirAngular::Locators::Button    = Watir::Locators::Button
+WatirAngular::Locators::Cell      = Watir::Locators::Cell
+WatirAngular::Locators::Row       = Watir::Locators::Row
+WatirAngular::Locators::TextArea  = Watir::Locators::TextArea
+WatirAngular::Locators::TextField = Watir::Locators::TextField
