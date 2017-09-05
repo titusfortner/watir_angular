@@ -1,8 +1,14 @@
 # WatirAngular
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/watir_angular`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem will automatically wait for Angular events after each action that is 
+likely to change the DOM. (Using `Watir::AfterHook` class)
 
-TODO: Delete this and the text above, and describe your gem
+This gem adds direct locator support for all `ng-` specific tags, like:
+
+```ruby
+browser.div(ng_model: 'foo')
+browser.div(ng_class_even: 'bar')
+```
 
 ## Installation
 
