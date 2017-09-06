@@ -2,29 +2,7 @@
 # From https://github.com/watir/watir/pull/387
 
 require "watir"
-
-require 'watir_angular/locators/element/locator'
 require 'watir_angular/locators/element/selector_builder'
-require 'watir_angular/locators/element/validator'
-
-require 'watir_angular/locators/button/locator'
-require 'watir_angular/locators/button/selector_builder'
-require 'watir_angular/locators/button/selector_builder/xpath'
-require 'watir_angular/locators/button/validator'
-
-require 'watir_angular/locators/cell/locator'
-require 'watir_angular/locators/cell/selector_builder'
-
-require 'watir_angular/locators/row/locator'
-require 'watir_angular/locators/row/selector_builder'
-
-require 'watir_angular/locators/text_area/locator'
-require 'watir_angular/locators/text_area/selector_builder'
-
-require 'watir_angular/locators/text_field/locator'
-require 'watir_angular/locators/text_field/selector_builder'
-require 'watir_angular/locators/text_field/selector_builder/xpath'
-require 'watir_angular/locators/text_field/validator'
 
 module WatirAngular
   def wait_for_angular(timeout: Watir.default_timeout)
@@ -47,4 +25,16 @@ end
 
 require 'extensions/watir/browser'
 Watir.locator_namespace = WatirAngular::Locators
+
+WatirAngular::Locators::Element::Locator = Watir::Locators::Element::Locator
+WatirAngular::Locators::Element::Validator = Watir::Locators::Element::Validator
+
+# Behaviors for element subclasses to come from Watir rather than WatirAngular superclass element
+WatirAngular::Locators::Button::Locator = Watir::Locators::Button::Locator
+WatirAngular::Locators::Button::Validator = Watir::Locators::Button::Validator
+WatirAngular::Locators::Cell::Locator = Watir::Locators::Cell::Locator
+WatirAngular::Locators::Row::Locator = Watir::Locators::Row::Locator
+WatirAngular::Locators::TextArea::Locator = Watir::Locators::TextArea::Locator
+WatirAngular::Locators::TextField::Locator = Watir::Locators::TextField::Locator
+WatirAngular::Locators::TextField::Validator = Watir::Locators::TextField::Validator
 

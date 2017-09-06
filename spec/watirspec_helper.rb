@@ -10,9 +10,7 @@ WatirSpec.implementation do |watirspec|
   watirspec.browser_args = [:chrome, opts]
 
   watirspec.guard_proc = lambda do |watirspec_guards|
-    watir_angular_guards = [:chrome]
-    watir_angular_guards << :watir_angular
-
+    watir_angular_guards = %i[chrome watir_angular relaxed_locate]
     watirspec_guards.any? { |guard| watir_angular_guards.include?(guard) }
   end
 end
