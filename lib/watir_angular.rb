@@ -7,6 +7,25 @@ require 'watir_angular/locators/element/locator'
 require 'watir_angular/locators/element/selector_builder'
 require 'watir_angular/locators/element/validator'
 
+require 'watir_angular/locators/button/locator'
+require 'watir_angular/locators/button/selector_builder'
+require 'watir_angular/locators/button/selector_builder/xpath'
+require 'watir_angular/locators/button/validator'
+
+require 'watir_angular/locators/cell/locator'
+require 'watir_angular/locators/cell/selector_builder'
+
+require 'watir_angular/locators/row/locator'
+require 'watir_angular/locators/row/selector_builder'
+
+require 'watir_angular/locators/text_area/locator'
+require 'watir_angular/locators/text_area/selector_builder'
+
+require 'watir_angular/locators/text_field/locator'
+require 'watir_angular/locators/text_field/selector_builder'
+require 'watir_angular/locators/text_field/selector_builder/xpath'
+require 'watir_angular/locators/text_field/validator'
+
 module WatirAngular
   def wait_for_angular(timeout: Watir.default_timeout)
     angular_element = "document.querySelectorAll('[ng-app]')[0]"
@@ -29,17 +48,3 @@ end
 require 'extensions/watir/browser'
 Watir.locator_namespace = WatirAngular::Locators
 
-class WatirAngular::Locators::Button < WatirAngular::Locators::Element; end
-class WatirAngular::Locators::Cell < WatirAngular::Locators::Element; end
-class WatirAngular::Locators::Row < WatirAngular::Locators::Element; end
-class WatirAngular::Locators::TextArea < WatirAngular::Locators::Element; end
-class WatirAngular::Locators::TextField < WatirAngular::Locators::Element; end
-
-WatirAngular::Locators::Button::Locator = Watir::Locators::Button::Locator
-WatirAngular::Locators::Cell::Locator = Watir::Locators::Cell::Locator
-WatirAngular::Locators::Row::Locator = Watir::Locators::Row::Locator
-WatirAngular::Locators::TextArea::Locator = Watir::Locators::TextArea::Locator
-WatirAngular::Locators::TextField::Locator = Watir::Locators::TextField::Locator
-
-WatirAngular::Locators::Button::Validator = Watir::Locators::Button::Validator
-WatirAngular::Locators::TextField::Validator = Watir::Locators::TextField::Validator
