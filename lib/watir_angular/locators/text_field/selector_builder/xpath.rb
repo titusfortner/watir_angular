@@ -1,15 +1,8 @@
-module Watir
+module WatirAngular
   module Locators
     class TextField
       class SelectorBuilder
-        class XPath < Element::SelectorBuilder::XPath
-          def lhs_for(building, key)
-            if building == :input && key == :text
-              "@value"
-            else
-              super
-            end
-          end
+        class XPath < Watir::Locators::TextField::SelectorBuilder::XPath
         end
       end
     end

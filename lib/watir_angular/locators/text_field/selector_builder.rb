@@ -1,7 +1,9 @@
-module Watir
+module WatirAngular
   module Locators
     class TextField
       class SelectorBuilder < Element::SelectorBuilder
+
+        # Direct copy from Watir::Locators::Button::SelectorBuilder because multiple inheritance
         def build_wd_selector(selectors)
           return if selectors.values.any? { |e| e.kind_of? Regexp }
 
@@ -20,9 +22,10 @@ module Watir
 
         private
 
+        # (mostly) Direct copy from Watir::Locators::Button::SelectorBuilder because multiple inheritance
         def negative_type_expr
           Watir::TextField::NON_TEXT_TYPES.map do |type|
-            "%s!=%s" % [XpathSupport.downcase('@type'), type.inspect]
+            "%s!=%s" % [Watir::XpathSupport.downcase('@type'), type.inspect]
           end.join(' and ')
         end
       end

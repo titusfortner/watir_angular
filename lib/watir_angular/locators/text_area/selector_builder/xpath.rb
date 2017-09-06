@@ -1,8 +1,8 @@
 module WatirAngular
   module Locators
-    class TextField
+    class TextArea
       class SelectorBuilder
-        class XPath < Watir::Locators::TextField::SelectorBuilder::XPath
+        class XPath < Watir::Locators::TextArea::SelectorBuilder::XPath
         end
       end
     end
