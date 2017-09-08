@@ -26,15 +26,3 @@ end
 require 'extensions/watir/browser'
 Watir.locator_namespace = WatirAngular::Locators
 
-WatirAngular::Locators::Element::Locator = Watir::Locators::Element::Locator
-WatirAngular::Locators::Element::Validator = Watir::Locators::Element::Validator
-
-# Behaviors for element subclasses to come from Watir rather than WatirAngular superclass element
-WatirAngular::Locators::Button::Locator = Watir::Locators::Button::Locator
-WatirAngular::Locators::Button::Validator = Watir::Locators::Button::Validator
-WatirAngular::Locators::Cell::Locator = Watir::Locators::Cell::Locator
-WatirAngular::Locators::Row::Locator = Watir::Locators::Row::Locator
-WatirAngular::Locators::TextArea::Locator = Watir::Locators::TextArea::Locator
-WatirAngular::Locators::TextField::Locator = Watir::Locators::TextField::Locator
-WatirAngular::Locators::TextField::Validator = Watir::Locators::TextField::Validator
-
