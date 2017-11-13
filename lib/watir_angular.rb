@@ -25,7 +25,9 @@ module WatirAngular
       # angular not used in the application, continue as normal
     rescue Selenium::WebDriver::Error::UnknownError => ex
       # TODO - this may be a bug in chromedriver that it is not a JavaScriptError
-      raise unless ex.message.include? "angular is not defined"
+      unless [" of undefined", "angular is not defined"].any? {|p| ex.message.include? p}
+        raise
+      end
       # angular not used in the application, continue as normal
     end
 
