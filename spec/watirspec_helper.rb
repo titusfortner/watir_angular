@@ -2,6 +2,8 @@ require 'webdrivers'
 require "watir_angular"
 require 'watirspec'
 
+WatirSpec.htmls << File.expand_path("../watirspec/html", __FILE__)
+
 WatirSpec.implementation do |watirspec|
   opts = {}
 

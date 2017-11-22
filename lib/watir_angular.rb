@@ -1,15 +1,18 @@
-# Code on Page is based on code by westlm1@NW110283.nwie.net
+# Code on this page is based on code by westlm1@NW110283.nwie.net
 # From https://github.com/watir/watir/pull/387
 
 require "watir"
-require 'watir_angular/locators/element/selector_builder'
+
+Watir::Locators::Element::SelectorBuilder.send(:remove_const, :WILDCARD_ATTRIBUTE)
+Watir::Locators::Element::SelectorBuilder::WILDCARD_ATTRIBUTE = /^(aria|data|ng)_(.+)$/
 
 module WatirAngular
-  def wait_for_angular(timeout: Watir.default_timeout)
+  def self.wait_for_angular(browser, timeout: Watir.default_timeout)
+    wd = browser.wd
     angular_element = "document.querySelectorAll('[ng-app]')[0]"
     wd.execute_script("angular.element(#{angular_element}).scope().pageFinishedRendering = false")
     wd.execute_script("angular.getTestability(#{angular_element}).whenStable(function(){angular.element(#{angular_element}).scope().pageFinishedRendering = true})")
-    wait_until(timeout: timeout, message: "waiting for angular to render") do
+    browser.wait_until(timeout: timeout, message: "waiting for angular to render") do
       wd.execute_script("return angular.element(#{angular_element}).scope().pageFinishedRendering")
     end
   rescue Selenium::WebDriver::Error::InvalidElementStateError
@@ -21,8 +24,8 @@ module WatirAngular
     raise unless ex.message.include? "angular is not defined"
     # angular not used in the application, continue as normal
   end
+
+  def self.inject_wait(browser)
+    browser.after_hooks.add ->(browser) { wait_for_angular(browser) }
+  end
 end
-
-require 'extensions/watir/browser'
-Watir.locator_namespace = WatirAngular::Locators
-

@@ -28,8 +28,21 @@ Or install it yourself as:
 
 ## Usage
 
+To have access to all `ng-*` locators and methods, simply require the gem 
 ```ruby
 require "watir_angular"
+```
+
+To explicitly specify a wait for angular executions to complete
+```ruby
+browser = Watir::Browser.new
+WatirAngular.wait_for_angular(browser)
+```
+
+To automatically wait for angular executions to complete after each method
+```ruby
+browser = Watir::Browser.new
+WatirAngular.inject_angular_wait(browser)
 ```
 
 ## Contributing
