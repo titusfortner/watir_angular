@@ -17,12 +17,12 @@ describe WatirAngular do
 
   describe "#wait_for_angular" do
     it "execute scripts" do
-      expect(browser.wd).to receive(:execute_script).and_return(true).exactly(3).times
+      expect(browser.wd).to receive(:execute_async_script).and_return(true).once
       WatirAngular.wait_for_angular(browser)
     end
 
     it "accepts timeout" do
-      expect { WatirAngular.wait_for_angular(browser, timeout: 4) }.to_not raise_exception
+      expect { WatirAngular.wait_for_angular(browser) }.to_not raise_exception
     end
   end
 
@@ -36,8 +36,8 @@ describe WatirAngular do
 
     it "executes after hook" do
       WatirAngular.inject_wait(browser)
-      expect(browser.wd).to receive(:execute_script).and_return(true).exactly(3).times
-      expect { browser.refresh }.to_not raise_error
+      expect(browser.wd).to receive(:execute_async_script).and_return(true).twice
+      expect { 2.times { browser.refresh } }.to_not raise_error
     end
 
   end
