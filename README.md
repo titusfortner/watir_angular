@@ -42,7 +42,7 @@ WatirAngular.wait_for_angular(browser)
 To automatically wait for angular executions to complete after each method
 ```ruby
 browser = Watir::Browser.new
-WatirAngular.inject_angular_wait(browser)
+WatirAngular.inject_wait(browser)
 ```
 
 ## Contributing
