@@ -11,7 +11,7 @@ module WatirAngular
     script = "return (#{js}).apply(null, arguments)"
 
     error = browser.wd.execute_async_script(script, 'body')
-    Watir.logger.warn error if error
+    Watir.logger.warn error, ids: [:watir_angular] if error
   end
 
   def self.inject_wait(browser)
